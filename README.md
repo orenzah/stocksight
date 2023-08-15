@@ -32,7 +32,7 @@ Join the conversation, get support, etc on [stocksight Slack](https://join.slack
 ### Download
 
 ```shell
-$ git clone https://github.com/shirosaidev/stocksight.git
+$ git clone https://github.com/orenzah/stocksight.git
 $ cd stocksight
 ```
 [Download latest version](https://github.com/shirosaidev/stocksight/releases/latest)
