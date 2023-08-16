@@ -24,8 +24,11 @@ try:
     import urllib.parse as urlparse
 except ImportError:
     import urlparse
-from tweepy.streaming import StreamListener
-from tweepy import API, Stream, OAuthHandler, TweepError
+import tweepy
+
+# from tweepy.streaming import StreamListener
+
+# from tweepy import API, Stream, OAuthHandler, TweepError
 from textblob import TextBlob
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from bs4 import BeautifulSoup
@@ -38,6 +41,7 @@ from newspaper import Article, ArticleException
 from config import *
 
 
+    
 STOCKSIGHT_VERSION = '0.1-b.12'
 __version__ = STOCKSIGHT_VERSION
 
@@ -60,7 +64,7 @@ prev_time = time.time()
 sentiment_avg = [0.0,0.0,0.0]
 
 
-class TweetStreamListener(StreamListener):
+class TweetStreamListener(tweepy.Stream):
 
     def __init__(self):
         self.count = 0
@@ -887,7 +891,7 @@ if __name__ == '__main__':
         tweetlistener = TweetStreamListener()
 
         # set twitter keys/tokens
-        auth = OAuthHandler(consumer_key, consumer_secret)
+        auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret)
         auth.set_access_token(access_token, access_token_secret)
         api = API(auth)
 
